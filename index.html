@@ -4,183 +4,245 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>그래서 누가 내 최애될래?</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
   :root{
-    --bg: #fdfbfb;
-    --bg-card: #ffffff;
-    --bg-card-2: #f8f4fb;
-    --border: #ede4f3;
-    --pink: #f492b8;
-    --pink-deep: #ec6ea5;
-    --purple: #b8a4f2;
-    --purple-deep: #9c7ff0;
-    --mint: #a8e6cf;
-    --text: #3a3348;
-    --text-dim: #857c99;
-    --text-faint: #b6adc6;
-    --shadow: 0 6px 24px rgba(184, 164, 242, 0.14);
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #eefaf5;
+    --line: #e2efe9;
+    --ink: #23282a;
+    --ink-dim: #71807a;
+    --ink-faint: #a9b3ad;
+    --accent: #45b592;
+    --accent-2: #379679;
+    --accent-soft: #ddf5ec;
+    --pink: #f6c9d3;
+    --pink-deep: #ea9fb0;
+    --shadow: 0 2px 6px rgba(60,90,80,0.05), 0 10px 24px rgba(60,90,80,0.06);
+    --radius-lg: 20px;
+    --radius-md: 14px;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    background:
-      radial-gradient(circle at 12% 0%, rgba(184,164,242,0.10), transparent 45%),
-      radial-gradient(circle at 88% 12%, rgba(244,146,184,0.10), transparent 45%),
-      var(--bg);
-    color:var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     min-height:100vh;
-    padding: 40px 20px 80px;
+    padding: 48px 20px 90px;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:760px;margin:0 auto;}
+  .wrap{max-width:720px;margin:0 auto;}
   .eyebrow{
-    display:flex;align-items:center;gap:10px;
-    color:var(--pink-deep); font-size:13px; font-weight:700; letter-spacing:0.02em;
+    display:flex;align-items:center;gap:9px;
+    color:var(--accent-2); font-size:12.5px; font-weight:700; letter-spacing:0.06em;
     margin-bottom:18px;
   }
-  .eyebrow .line{width:22px;height:2px;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:2px;}
+  .eyebrow .line{width:20px;height:2px;border-radius:2px;background:var(--accent);}
   h1{
-    font-size:38px; line-height:1.25; margin:0 0 20px; font-weight:800; letter-spacing:-0.01em;
+    font-family:"Pretendard", sans-serif;
+    font-size:34px; line-height:1.32; margin:0 0 20px; font-weight:800; letter-spacing:-0.02em; color:var(--ink);
+    word-break:keep-all;
   }
   h1 .tag{
-    background:linear-gradient(135deg,var(--pink),var(--purple));
-    padding:2px 12px; border-radius:8px; color:#fff; display:inline-block;
+    color:var(--accent-2); position:relative; white-space:nowrap;
   }
-  .lead{color:var(--text-dim); font-size:15px; line-height:1.85; margin-bottom:32px;}
-  .lead b{color:var(--text); font-weight:700;}
-  .lead .accent{color:var(--pink); font-weight:700;}
+  h1 .tag::after{
+    content:""; position:absolute; left:-3px; right:-3px; bottom:3px; height:10px; background:var(--accent-soft); z-index:-1; border-radius:4px;
+  }
+  .lead{color:var(--ink-dim); font-size:15px; line-height:1.85; margin-bottom:32px;}
+  .lead b{color:var(--ink); font-weight:700;}
+  .lead .accent{color:var(--accent-2); font-weight:700;}
 
   .card{
-    background:var(--bg-card);
-    border:1px solid var(--border);
+    background:var(--surface);
+    border:1px solid var(--line);
     box-shadow:var(--shadow);
-    border-radius:22px;
+    border-radius:var(--radius-lg);
     padding:30px;
-    margin-bottom:22px;
+    margin-bottom:24px;
   }
-  label{display:block; font-size:14px; color:var(--text-dim); margin-bottom:10px; font-weight:700;}
+  label{display:block; font-size:13px; color:var(--ink-dim); margin-bottom:10px; font-weight:700;}
   .row{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:22px;}
   .field{flex:1; min-width:220px;}
   input[type=text], select{
-    width:100%; background:var(--bg-card-2); border:1px solid var(--border); color:var(--text);
-    padding:14px 16px; border-radius:12px; font-size:16px; outline:none; appearance:none;
+    width:100%; background:var(--surface-2); border:1px solid var(--line); color:var(--ink);
+    padding:14px 16px; border-radius:var(--radius-md); font-size:16px; outline:none; appearance:none;
+    transition:border-color .2s ease, box-shadow .2s ease;
+    font-family:inherit;
   }
   select{
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23857c99' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
-    background-repeat:no-repeat; background-position: right 14px center; background-size:18px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2371807a' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat; background-position: right 14px center; background-size:16px;
   }
-  input:focus, select:focus{border-color:var(--purple);}
-  .gender-row{display:flex; gap:10px; margin-bottom:18px;}
+  input:focus, select:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(69,181,146,0.15);}
+  .gender-row{display:flex; gap:8px; margin-bottom:20px;}
   .gender-btn{
-    flex:1; padding:14px; border-radius:12px; border:1px solid var(--border);
-    background:var(--bg-card-2); color:var(--text-dim); font-weight:700; font-size:15px; cursor:pointer;
+    flex:1; padding:13px; border-radius:var(--radius-md); border:1px solid var(--line);
+    background:var(--surface-2); color:var(--ink-dim); font-weight:600; font-size:14px; cursor:pointer;
+    transition:all .15s ease; font-family:inherit;
   }
+  .gender-btn:hover{border-color:var(--accent);}
   .gender-btn.active{
-    background:linear-gradient(135deg,var(--pink),var(--purple)); color:#fff; border-color:transparent;
+    background:var(--accent); color:#fff; border-color:var(--accent);
   }
-  .hint{font-size:12.5px; color:var(--text-faint); line-height:1.75; margin-bottom:22px; background:var(--bg-card-2); border-radius:12px; padding:14px 16px;}
-  .hint b{color:var(--text-dim);}
+  .hint{font-size:12.5px; color:var(--ink-dim); line-height:1.85; margin-bottom:24px; background:var(--surface-2); border-radius:var(--radius-md); padding:16px 18px;}
+  .hint b{color:var(--ink);}
   .submit-btn{
-    width:100%; padding:17px; border:none; border-radius:14px; font-size:17px; font-weight:800;
-    background:linear-gradient(135deg,var(--pink),var(--purple)); color:#fff; cursor:pointer;
-    letter-spacing:0.01em; box-shadow:0 8px 20px rgba(236,110,165,0.28);
+    width:100%; padding:18px; border:none; border-radius:var(--radius-md); font-size:16px; font-weight:700;
+    background:var(--accent); color:#fff; cursor:pointer;
+    letter-spacing:0.01em;
+    transition:background .15s ease, transform .1s ease, box-shadow .15s ease;
+    font-family:inherit;
+    box-shadow:0 8px 20px rgba(69,181,146,0.28);
   }
+  .submit-btn:hover{background:var(--accent-2); transform:translateY(-1px); box-shadow:0 10px 24px rgba(69,181,146,0.34);}
   .submit-btn:active{transform:scale(0.99);}
 
-  #results{display:none;}
-  .result-head{margin-bottom:16px;}
+  #results{display:none; animation:fadeIn .5s ease; scroll-margin-top:24px;}
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
   .summary-card{
     display:flex; align-items:center; gap:20px;
-    background:var(--bg-card); border:1px solid var(--border); box-shadow:var(--shadow);
-    border-radius:20px; padding:22px 26px; margin-bottom:18px;
+    background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
+    border-radius:var(--radius-lg); padding:24px 28px; margin-bottom:20px;
   }
   .summary-badge{
-    width:64px; height:64px; border-radius:50%; flex-shrink:0;
+    width:58px; height:58px; border-radius:50%; flex-shrink:0;
     display:flex; align-items:center; justify-content:center;
-    font-size:30px; font-weight:800; color:#fff;
+    font-family:"Pretendard", sans-serif;
+    font-size:26px; font-weight:800; color:#fff;
   }
-  .summary-title{font-size:18px; font-weight:800; margin-bottom:6px;}
-  .summary-sub{font-size:13px; color:var(--text-dim);}
+  .summary-title{font-size:16.5px; font-weight:800; margin-bottom:6px; color:var(--ink);}
+  .summary-sub{font-size:12.5px; color:var(--ink-dim);}
 
-  .elem-bar{display:flex; gap:5px; height:9px; margin:4px 0 8px;}
-  .elem-bar span{border-radius:6px; min-width:6%; transition:flex-grow .3s;}
-  .elem-bar-labels{display:flex; gap:5px; margin-bottom:22px;}
-  .elem-bar-labels span{flex:1; min-width:6%; text-align:center; font-size:12px; color:var(--text-faint); font-weight:700;}
+  .elem-bar{display:flex; gap:4px; height:7px; margin:4px 0 8px;}
+  .elem-bar span{border-radius:4px; min-width:6%; transition:flex-grow .3s;}
+  .elem-bar-labels{display:flex; gap:4px; margin-bottom:26px;}
+  .elem-bar-labels span{flex:1; min-width:6%; text-align:center; font-size:11px; color:var(--ink-faint); font-weight:700;}
 
-  .result-title{font-size:20px; font-weight:800; margin:6px 0 10px;}
-  .result-desc{font-size:13px; color:var(--text-dim); line-height:1.75; margin-bottom:20px;}
-  .result-desc b{color:var(--text);}
+  .result-title{font-family:"Pretendard", sans-serif; font-size:21px; font-weight:800; margin:8px 0 12px; color:var(--ink);}
+  .result-desc{font-size:13px; color:var(--ink-dim); line-height:1.85; margin-bottom:24px;}
+  .result-desc b{color:var(--ink);}
 
-  .search-box{margin-bottom:14px;}
+  .search-box{margin-bottom:16px;}
   .search-box input{
-    width:100%; background:var(--bg-card-2); border:1px solid var(--border); color:var(--text);
-    padding:14px 16px; border-radius:12px; font-size:14px; outline:none;
+    width:100%; background:var(--surface-2); border:1px solid var(--line); color:var(--ink);
+    padding:13px 16px; border-radius:var(--radius-md); font-size:14px; outline:none; font-family:inherit;
   }
-  .search-box input:focus{border-color:var(--purple);}
-  .filter-label{font-size:12.5px; color:var(--text-faint); font-weight:700; margin-bottom:8px;}
-  .agency-tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+  .search-box input:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(69,181,146,0.15);}
+  .filter-label{font-size:12px; color:var(--ink-faint); font-weight:700; margin-bottom:9px;}
+  .agency-tabs{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:18px;}
   .agency-tab{
-    padding:9px 16px; border-radius:20px; border:1px solid var(--border); background:var(--bg-card-2);
-    color:var(--text-dim); font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap;
+    padding:8px 15px; border-radius:16px; border:1px solid var(--line); background:var(--surface-2);
+    color:var(--ink-dim); font-size:12.5px; font-weight:600; cursor:pointer; white-space:nowrap;
+    transition:all .15s ease; font-family:inherit;
   }
-  .agency-tab .cnt{color:var(--text-faint); font-weight:600; margin-left:3px;}
-  .agency-tab.active{background:linear-gradient(135deg,var(--pink),var(--purple)); color:#fff; border-color:transparent;}
-  .agency-tab.active .cnt{color:rgba(255,255,255,0.85);}
+  .agency-tab:hover{border-color:var(--accent);}
+  .agency-tab .cnt{color:var(--ink-faint); font-weight:500; margin-left:2px;}
+  .agency-tab.active{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .agency-tab.active .cnt{color:rgba(255,255,255,0.8);}
 
-  .list-gender-toggle{display:flex; gap:10px; margin-bottom:20px;}
+  .list-gender-toggle{display:flex; gap:8px; margin-bottom:22px;}
   .list-gender-toggle button{
-    flex:1; padding:15px; border-radius:14px; border:1px solid var(--border);
-    background:var(--bg-card-2); color:var(--text-dim); font-weight:800; font-size:15px; cursor:pointer;
+    flex:1; padding:14px; border-radius:var(--radius-md); border:1px solid var(--line);
+    background:var(--surface-2); color:var(--ink-dim); font-weight:700; font-size:14px; cursor:pointer;
+    transition:all .15s ease; font-family:inherit;
   }
+  .list-gender-toggle button:hover{border-color:var(--accent);}
   .list-gender-toggle button.active{
-    background:linear-gradient(135deg,var(--pink),var(--purple)); color:#fff; border-color:transparent;
-    box-shadow:0 8px 18px rgba(236,110,165,0.24);
+    background:var(--accent); color:#fff; border-color:var(--accent);
   }
+
+  /* ===== TOP5 피처 카드 ===== */
+  .section-label{
+    display:flex; align-items:baseline; gap:10px; margin:30px 0 14px;
+  }
+  .section-label .num{font-size:12.5px; color:var(--accent-2); font-weight:800; letter-spacing:0.06em; background:var(--accent-soft); padding:3px 9px; border-radius:8px;}
+  .section-label .txt{font-size:15px; font-weight:800; color:var(--ink);}
+  .section-label .rule{flex:1; height:1px; background:var(--line);}
 
   .idol-card{
-    background:var(--bg-card); border:1px solid var(--border); box-shadow:var(--shadow); border-radius:16px;
-    padding:18px 20px; margin-bottom:12px; display:flex; gap:16px; align-items:flex-start;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg);
+    margin-bottom:10px; overflow:hidden; cursor:pointer; box-shadow:var(--shadow);
+    transition:border-color .15s ease, transform .15s ease;
   }
+  .idol-card:hover{border-color:var(--accent); transform:translateY(-1px);}
+  .idol-card.rank-1{border-color:var(--pink-deep); border-width:1.5px;}
+
+  .idol-row{padding:16px 18px; display:flex; gap:14px; align-items:center;}
   .rank-badge{
-    width:38px; height:38px; border-radius:11px; display:flex; align-items:center; justify-content:center;
-    font-weight:800; font-size:15px; flex-shrink:0; color:#fff;
-    background:linear-gradient(135deg,var(--purple),var(--pink));
-    margin-top:2px;
+    width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:14px; flex-shrink:0; color:var(--ink);
+    background:var(--surface-2); border:1px solid var(--line);
   }
-  .idol-card.rank-1 .rank-badge{background:linear-gradient(135deg,#ffd479,#ffab5e);}
-  .idol-card.rank-2 .rank-badge{background:linear-gradient(135deg,#dfe6f0,#b7c2d6);}
-  .idol-card.rank-3 .rank-badge{background:linear-gradient(135deg,#e6bb96,#cf9a6c);}
+  .idol-card.rank-1 .rank-badge{background:var(--pink-deep); color:#fff; border-color:var(--pink-deep); font-size:16px;}
+  .idol-card.rank-2 .rank-badge{background:#e7f2ee; border-color:#d7e9e2;}
+  .idol-card.rank-3 .rank-badge{background:#fbeff2; border-color:#f3dee3;}
   .idol-info{flex:1; min-width:0;}
-  .idol-name-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;}
-  .idol-name{font-weight:800; font-size:16px;}
-  .idol-group{color:var(--text-faint); font-size:12.5px;}
+  .idol-name-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px;}
+  .idol-name{font-weight:800; font-size:15.5px; color:var(--ink);}
+  .idol-group{color:var(--ink-faint); font-size:12px;}
+  .teaser{color:var(--accent-2); font-size:12.5px; font-weight:600;}
   .day-chip{
-    display:inline-flex; align-items:center; gap:5px; background:var(--bg-card-2); border-radius:20px;
-    padding:3px 10px 3px 8px; font-size:12px; font-weight:700; color:var(--text-dim);
+    display:inline-flex; align-items:center; gap:5px; background:var(--surface-2); border-radius:14px;
+    padding:2px 9px 2px 7px; font-size:11px; font-weight:700; color:var(--ink-dim);
   }
-  .day-chip .dot{width:7px; height:7px; border-radius:50%; display:inline-block;}
-  .tag-line{color:var(--pink-deep); font-size:12.5px; font-weight:700; margin-bottom:8px; line-height:1.6;}
-  .idol-desc{color:var(--text-dim); font-size:13px; line-height:1.65;}
-  .report-link{color:var(--text-faint); font-size:11.5px; margin-top:10px; cursor:pointer; display:inline-block;}
-  .report-link:hover{color:var(--text-dim);}
+  .day-chip .dot{width:6px; height:6px; border-radius:50%; display:inline-block;}
   .score-wrap{text-align:right; flex-shrink:0;}
-  .score{font-size:24px; font-weight:800; background:linear-gradient(135deg,var(--pink-deep),var(--purple-deep)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .score sub{font-size:13px; font-weight:700;}
-  .score-label{font-size:11px; color:var(--text-faint);}
+  .score{font-family:"Pretendard", sans-serif; font-size:21px; font-weight:800; color:var(--accent-2);}
+  .score sub{font-size:12px; font-weight:700;}
+  .score-label{font-size:10px; color:var(--ink-faint);}
+  .chevron{width:16px; height:16px; flex-shrink:0; color:var(--ink-faint); transition:transform .2s ease;}
+  .idol-card.open .chevron{transform:rotate(180deg);}
+
+  .idol-detail{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+    border-top:1px solid var(--line); background:var(--surface-2);
+  }
+  .idol-card.open .idol-detail{max-height:900px;}
+  .idol-detail-inner{padding:18px 18px 20px;}
+  .tag-line{color:var(--accent-2); font-size:12.5px; font-weight:700; margin-bottom:6px; line-height:1.6;}
+  .tag-line.mutual{color:var(--ink-dim); margin-bottom:10px;}
+  .scene-label{font-size:11px; font-weight:800; color:var(--ink-faint); letter-spacing:0.04em; margin:12px 0 5px;}
+  .scene-label:first-child{margin-top:0;}
+  .idol-desc{color:var(--ink-dim); font-size:13px; line-height:1.75;}
+  .report-link{color:var(--ink-faint); font-size:11px; margin-top:14px; cursor:pointer; display:inline-block; text-decoration:underline; text-underline-offset:2px;}
+  .report-link:hover{color:var(--ink-dim);}
+
+  /* 나머지 순위 - 컴팩트 리스트 */
+  .rest-row{
+    display:flex; align-items:center; gap:12px; padding:13px 4px;
+    border-bottom:1px solid var(--line); cursor:pointer;
+  }
+  .rest-row:last-child{border-bottom:none;}
+  .rest-rank{width:22px; font-size:13px; color:var(--ink-faint); font-weight:800; flex-shrink:0;}
+  .rest-name{font-weight:700; font-size:14px; color:var(--ink);}
+  .rest-group{color:var(--ink-faint); font-size:11.5px; margin-left:6px;}
+  .rest-score{margin-left:auto; font-weight:800; font-size:14px; color:var(--accent-2); flex-shrink:0;}
+  .rest-chevron{width:14px; height:14px; color:var(--ink-faint); flex-shrink:0; transition:transform .2s ease;}
+  .rest-item.open .rest-chevron{transform:rotate(180deg);}
+  .rest-item.open .rest-row{border-bottom:none;}
+  .rest-detail{max-height:0; overflow:hidden; transition:max-height .35s ease; background:var(--surface-2); border-radius:var(--radius-md);}
+  .rest-item.open .rest-detail{max-height:900px; margin-bottom:8px;}
+  .rest-detail-inner{padding:16px 16px 18px;}
 
   .empty-note{
-    text-align:center; color:var(--text-faint); font-size:13px; padding:26px 10px; line-height:1.8;
+    text-align:center; color:var(--ink-faint); font-size:13px; padding:30px 10px; line-height:1.8;
   }
-  .footer-note{margin-top:28px; font-size:12px; color:var(--text-faint); line-height:1.8; text-align:center;}
+  .footer-note{margin-top:32px; font-size:11.5px; color:var(--ink-faint); line-height:1.9; text-align:center;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow"><span class="line"></span> 오행 상생상극 · 지지 궁합 · 십신 매칭</div>
-  <h1>사주 궁합 <span class="tag">최애</span> 매칭</h1>
+  <div class="eyebrow"><span class="line"></span> 오행 상생상극 · 지지 궁합 · 쌍방향 십신</div>
+  <h1>그래서 누가 내 <span class="tag">최애</span> 될래?</h1>
   <div class="lead">
-    내 사주랑 제일 잘 맞는 최애는 누구일까? 🔮<br>
-    생년월일(·태어난 시각·성별)만 있으면 등록된 인물 중에서 오행 상생상극·지지(地支) 궁합, 그리고 <span class="accent">'이성 인연' 십신</span>까지 따져 순위로 찾아드려요.<br>
+    순애각인지 혐관각인지, 사주로 진지하게 파보았어요 🔮<br>
+    생년월일(·태어난 시각·성별)만 입력하면 등록된 인물들과의 오행·지지 궁합은 물론,<br>
+    <span class="accent">내가 보는 상대</span>와 <span class="accent">상대가 보는 나</span>까지 양방향으로 계산해서 케미 랭킹을 뽑아드려요.<br>
+    사전 정보 없이 순수 사주 데이터만으로 뽑은 결과예요.
   </div>
 
   <div class="card">
@@ -203,10 +265,14 @@
       <button class="gender-btn" data-g="male">남성</button>
     </div>
     <div class="hint">
-      태어난 시각은 하루 24시간을 12개의 십이지지(十二地支)로 나눈 <b>시진(時辰)</b> 단위로 선택합니다 (예: 자시 23:30~01:30). 시각을 알면 당신의 시지(時支)까지 궁합에 반영돼 순위가 더 정교해지고, '모름'을 고르면 태어난 날짜(연간·월간·일간)만으로 계산합니다.<br>
-      <b>성별</b>을 고르면 명리의 '이성 인연' 십신(남성=재성 · 여성=관성)을 살짝 더 반영해 순위·해석이 달라집니다. 미선택 시 성별 중립으로 계산합니다.
+      태어난 시각은 하루 24시간을 십이지지(十二地支) 12개로 나눈 <b>시진(時辰)</b> 단위로 선택해요.<br>
+      (예: 자시 23:30~01:30)<br>
+      시각까지 알면 시지(時支) 궁합까지 반영돼서 순위가 더 정교해져요.<br>
+      '모름'을 선택하면 태어난 날짜만으로 계산해요.<br>
+      <b>성별</b>을 고르면 명리의 '이성 인연' 십신(남성=재성 · 여성=관성)까지 반영해요.<br>
+      미선택 시에는 성별 중립으로 계산해요.
     </div>
-    <button class="submit-btn" id="submitBtn">내 최애 찾기</button>
+    <button class="submit-btn" id="submitBtn">내 최애 찾으러 가기</button>
   </div>
 
   <div id="results">
@@ -221,9 +287,12 @@
     <div class="elem-bar" id="elemBar"></div>
     <div class="elem-bar-labels"><span>木</span><span>火</span><span>土</span><span>金</span><span>水</span></div>
 
-    <div class="result-title">당신에게 추천하는 덕질 아이돌</div>
+    <div class="result-title">그래서, 누가 내 최애 될까요?</div>
     <div class="result-desc">
-      일간 기준 십신(정/편) 관계와 일지·월지·년지(띠) 궁합을 합산하고, 당신의 <b>신강·신약(身强身弱)</b>에 따라 가중치를 개인화해 점수화한 순위입니다. 태어난 시각을 넣으면 <b>시지(時支) 궁합</b>까지 반영됩니다. 아이돌에 대한 사전 정보 없이 오로지 사주 특성만으로 계산했습니다.
+      <b>내가 상대를 보는 십신</b>과 <b>상대가 나를 보는 십신</b>을 함께 계산했어요.<br>
+      일지·월지·년지(띠) 궁합까지 더해서 내 <b>신강·신약(身强身弱)</b>에 맞게 가중치를 개인화한 순위예요.<br>
+      시각을 입력하면 <b>시지(時支) 궁합</b>까지 반영돼요.<br>
+      사전 정보 없이 오로지 사주 특성만으로 계산했어요.
     </div>
 
     <div class="search-box">
@@ -241,7 +310,11 @@
       <button data-lg="male">남자 아이돌</button>
     </div>
 
-    <div id="resultList"></div>
+    <div class="section-label"><span class="num">TOP 5</span><span class="txt">내 찐 최애 후보</span><span class="rule"></span></div>
+    <div id="topList"></div>
+
+    <div class="section-label"><span class="num">6-N</span><span class="txt">나머지 순위</span><span class="rule"></span></div>
+    <div id="restList"></div>
   </div>
 
   <div class="footer-note">
@@ -270,7 +343,7 @@ const ZHI = ["자","축","인","묘","진","사","오","미","신","유","술","
 const GAN_ELEM = ["목","목","화","화","토","토","금","금","수","수"];
 const ZHI_ELEM = ["수","토","목","목","토","화","화","토","금","금","토","수"];
 const ELEM_ORDER = ["목","화","토","금","수"];
-const ELEM_COLOR = {"목":"#22c55e","화":"#ef4444","토":"#ca8a04","금":"#94a3b8","수":"#3b82f6"};
+const ELEM_COLOR = {"목":"#4d7c5f","화":"#a4402f","토":"#a5793a","금":"#7c7a70","수":"#3c5a78"};
 const JIE_TO_ZHI = {"입춘":2,"경칩":3,"청명":4,"입하":5,"망종":6,"소서":7,"입추":8,"백로":9,"한로":10,"입동":11,"대설":0,"소한":1};
 
 function isYangIdx(i){ return i % 2 === 0; }
@@ -375,24 +448,52 @@ const TEN_GOD_HANJA = {"비견":"比肩","겁재":"劫財","식신":"食神","�
 const TEN_GOD_GROUP = {"비견":"비겁","겁재":"비겁","식신":"식상","상관":"식상","편재":"재성","정재":"재성","편관":"관성","정관":"관성","편인":"인성","정인":"인성"};
 const TEN_GOD_BASE_SCORE = {"비견":55,"겁재":45,"식신":70,"상관":50,"편재":60,"정재":65,"편관":48,"정관":58,"편인":62,"정인":68};
 const TEN_GOD_FLAVOR = {
-  "비견":"나와 결이 닮은 친구형","겁재":"묘하게 신경 쓰이는 라이벌형",
-  "식신":"애정을 쏟는 최애형","상관":"자꾸 논쟁하고 싶은 자극형",
-  "편재":"손이 가는 취향저격형","정재":"꾸준히 정 붙는 안정형",
-  "편관":"도망 못 가는 강렬한 매력형","정관":"믿고 보는 모범생형",
-  "편인":"알듯 말듯 신비로운 매력형","정인":"마음이 편안해지는 힐링형"
+  "비견":"브로케미 친구형","겁재":"묘하게 긁는 라이벌형",
+  "식신":"순애각 최애형","상관":"티키타카 폭발형",
+  "편재":"지갑 스나 취저형","정재":"존버 안정 최애형",
+  "편관":"심쿵 주의 강렬형","정관":"안심 스밍각 모범생형",
+  "편인":"미스터리 궁금증형","정인":"힐링 존버 안식처형"
 };
 const TEN_GOD_NARRATIVE = {
-  "비견":"나와 결이 닮아서 편하게 다가갈 수 있는, 친구 같은 궁합이에요.",
-  "겁재":"묘하게 신경 쓰이고 자꾸 비교하게 되는, 라이벌 같은 궁합이에요.",
-  "식신":"내 기운이 온화하게 흘러가는 관계라, 편안히 챙겨주고 아끼는 덕질에 잘 맞아요.",
-  "상관":"내 끼를 마음껏 표현하게 만드는 상대라, 보고 있으면 계속 할 말이 생겨요.",
-  "편재":"손이 자꾸 가는 취향저격 궁합이라, 지갑이 저절로 열려요.",
-  "정재":"꾸준하고 안정적인 궁합이라, 오래도록 정 붙이며 덕질하기 좋아요.",
-  "편관":"강하게 끌어당기는 긴장감이 있어서, 눈을 뗄 수 없는 매력이에요.",
-  "정관":"믿음직하고 반듯한 기운이라, 안심하고 응원하게 되는 궁합이에요.",
-  "편인":"묘하게 신비로운 매력이 있어서, 알수록 더 궁금해지는 상대예요.",
-  "정인":"보고 있으면 마음이 편안해지는, 힐링이 되는 궁합이에요."
+  "비견":"팬사인회에 가도 어색함 1도 없이 친구처럼 편하게 대화할 스타일이에요. 부담 없이 웃고 떠들 수 있는, 결이 똑같은 브로케미예요.",
+  "겁재":"무대를 볼 때마다 '나라면 저기서 이렇게 했을 텐데' 하고 자꾸 참견하게 되는 라이벌 케미예요. 밉지 않은데 자꾸 신경 쓰이는 타입.",
+  "식신":"브이앱을 켜면 나도 모르게 '오늘 밥은 먹었어?' 하고 걱정부터 하게 되는 완전 순애 최애 포지션이에요. 무대에서 살짝만 힘들어 보여도 심장이 철렁해요.",
+  "상관":"댓글창에서 드립을 주고받으면 텐션이 미쳐 날뛸 타입이에요. 보고만 있어도 할 말이 계속 생기는, 티키타카 폭발 케미예요.",
+  "편재":"'이건 꼭 사야 돼' 하면서 알림 뜨자마자 결제창부터 여는, 완전 취향저격 지름신 케미예요. 콘서트 티켓팅도 이 사람 때문에 자동 성공각이에요.",
+  "정재":"3년, 5년이 지나도 안 질리고 조용히 스밍을 누르고 있을 존버형 최애예요. 화려하진 않아도 '얘는 진짜 내 사람'이라는 안정감이 있어요.",
+  "편관":"무대 직캠을 볼 때마다 심장이 쿵 내려앉는, 도망 못 가는 강렬한 텐션이에요. '저 눈빛 뭔데' 하면서 몇 번씩 돌려보게 되는 케미예요.",
+  "정관":"인터뷰만 봐도 '역시 믿고 보는 애' 소리가 절로 나오는 반듯한 케미예요. 논란 하나 없이 안심하고 총공 참여할 수 있는 든든한 최애 포지션이에요.",
+  "편인":"인터뷰를 볼 때마다 '얘 뭔가 더 있는데?' 싶은, 알면 알수록 궁금해지는 케미예요. 팬들 사이에서 '심연' 소리가 나올 타입이에요.",
+  "정인":"퇴근길에 이 사람 브이앱 하나 틀면 마음이 스르륵 편안해지는, 힐링 그 자체인 케미예요. 존버 없이도 그냥 곁에 있는 것만으로 좋은 타입이에요."
 };
+// 상대의 일간 기준으로 '나'를 바라볼 때의 십신 플레이버 (양방향 궁합용)
+const TEN_GOD_FLAVOR_REVERSE = {
+  "비견":"편하게 여기는 친구 같은 나","겁재":"묘하게 신경 쓰이는 나",
+  "식신":"챙기고 싶어지는 최애 같은 나","상관":"자꾸 티키타카 하고 싶은 나",
+  "편재":"자꾸 손이 가는 나","정재":"꾸준히 정드는 나",
+  "편관":"강하게 끌리는 나","정관":"믿음직한 나",
+  "편인":"궁금해지는 나","정인":"편안함을 주는 나"
+};
+const TEN_GOD_NARRATIVE_REVERSE = {
+  "비견":"상대 입장에서 나는 팬사인회에서 편하게 농담을 주고받을 수 있는, 부담 없는 친구 같은 팬일 거예요.",
+  "겁재":"상대 입장에서 나는 유독 눈에 띄고 자꾸 신경 쓰이는, 묘하게 의식하게 되는 팬일 거예요.",
+  "식신":"상대 입장에서 나는 늘 응원 문구를 들고 앞자리에서 챙겨주는, 정 많은 최애 팬일 거예요.",
+  "상관":"상대 입장에서 나는 팬사인회에서 예상 못한 드립으로 텐션을 올려주는, 자꾸 기억에 남는 팬일 거예요.",
+  "편재":"상대 입장에서 나는 신곡이 나오자마자 앨범부터 지르는, 손이 큰 고마운 팬일 거예요.",
+  "정재":"상대 입장에서 나는 데뷔 때부터 지금까지 한결같이 스밍을 눌러주는, 믿음직한 팬일 거예요.",
+  "편관":"상대 입장에서 나는 유독 강렬하게 응원해서 무대 위에서도 느껴질 만큼 존재감 있는 팬일 거예요.",
+  "정관":"상대 입장에서 나는 매너 좋고 반듯하게 응원하는, 안심되는 팬일 거예요.",
+  "편인":"상대 입장에서 나는 종종 예상 못한 타이밍에 서프라이즈를 주는, 신비로운 팬일 거예요.",
+  "정인":"상대 입장에서 나는 힘든 순간에도 늘 편안하게 곁을 지켜주는, 힐링 같은 팬일 거예요."
+};
+// 최종 점수 기반 케미 등급
+function scoreTier(score){
+  if(score>=90) return "천생연분 💘";
+  if(score>=75) return "케미 터짐 🔥";
+  if(score>=60) return "순애각 🌸";
+  if(score>=45) return "무난무난";
+  return "혐관각인데 은근 끌림 👀";
+}
 function tenGod(selfGanIdx, targetGanIdx){
   const si = elemIdx(GAN_ELEM[selfGanIdx]), ti = elemIdx(GAN_ELEM[targetGanIdx]);
   const sameYinYang = isYangIdx(selfGanIdx) === isYangIdx(targetGanIdx);
@@ -432,11 +533,11 @@ const CHUNG = { "자":"오","오":"자","축":"미","미":"축","인":"신","신
 const SAMHAP_GROUPS = [["해","묘","미"],["인","오","술"],["사","유","축"],["신","자","진"]];
 const BRANCH_HANJA = {"육합":"六合","삼합":"三合","비화":"比和","충":"沖","평범":""};
 const BRANCH_NARRATIVE = {
-  "육합":"찰떡같이 붙는 육합(六合)이라 함께 있으면 편안해요.",
-  "삼합":"같은 기운으로 뭉치는 삼합(三合)이라 함께할수록 시너지가 나요.",
-  "비화":"같은 지지라 텔레파시가 통하는 느낌이에요.",
-  "충":"부딪히는 충(沖)이지만, 그만큼 강하게 끌리는 궁합이에요.",
-  "평범":"무난하게 흘러가는 궁합이에요."
+  "육합":"찰떡같이 붙는 육합(六合)이라, 어디서 마주쳐도 자연스럽게 대화가 이어질 완전 찐친 케미예요.",
+  "삼합":"같은 국(局)으로 뭉치는 삼합(三合)이라, 같이 있으면 시너지가 폭발하는 느낌이에요.",
+  "비화":"같은 지지라 말 안 해도 텔레파시가 통하는, 이심전심 케미예요.",
+  "충":"부딪히는 충(沖)이라 티격태격할 수도 있지만, 그게 또 묘하게 끌리는 혐관 각... 근데 은근 설렘 포인트예요.",
+  "평범":"크게 부딪힐 일 없이 무난하게 흘러가는, 부담 없는 케미예요."
 };
 function samhapGroupOf(z){ return SAMHAP_GROUPS.find(g => g.includes(z)); }
 function branchRelation(myZhi, otherZhi){
@@ -467,6 +568,10 @@ function scoreMatch(mySaju, myGender, otherSaju){
   const godGroup = TEN_GOD_GROUP[god];
   const godScore = TEN_GOD_BASE_SCORE[god] * weights[godGroup];
 
+  // 상대의 일간 기준으로 '나'를 보는 관점 (양방향 궁합)
+  const god2 = tenGod(otherSaju.day.gan, mySaju.day.gan);
+  const god2Score = TEN_GOD_BASE_SCORE[god2] * 0.35;
+
   const ilji = branchRelation(ZHI[mySaju.day.zhi], ZHI[otherSaju.day.zhi]);
   const wolji = branchRelation(ZHI[mySaju.month.zhi], ZHI[otherSaju.month.zhi]);
   const yeonji = branchRelation(ZHI[mySaju.year.zhi], ZHI[otherSaju.year.zhi]);
@@ -491,7 +596,7 @@ function scoreMatch(mySaju, myGender, otherSaju){
     bonusNote = count > 0 ? `${myGender==="male"?"재성":"관성"} ${count}개 포착` : "";
   }
 
-  const raw = godScore + ilji.score*1.4 + wolji.score*0.8 + yeonji.score*0.7 + (siji ? siji.score*0.9 : 0) + fillScore + bonusScore;
+  const raw = godScore + god2Score + ilji.score*1.4 + wolji.score*0.8 + yeonji.score*0.7 + (siji ? siji.score*0.9 : 0) + fillScore + bonusScore;
 
   // 태그 라인 구성
   const tagParts = [`${god}(${TEN_GOD_HANJA[god]})`, TEN_GOD_FLAVOR[god]];
@@ -500,13 +605,21 @@ function scoreMatch(mySaju, myGender, otherSaju){
   if(wolji.type === "육합" || wolji.type === "삼합") tagParts.push(`월지 ${wolji.type}(${BRANCH_HANJA[wolji.type]})`);
   if(siji) tagParts.push(`시지 ${siji.type}${BRANCH_HANJA[siji.type] ? "(" + BRANCH_HANJA[siji.type] + ")" : ""}`);
 
-  // 설명 문단
-  let descParts = [TEN_GOD_NARRATIVE[god], BRANCH_NARRATIVE[ilji.type]];
-  if(siji) descParts.push(`태어난 시각의 지지와도 ${siji.type}${BRANCH_HANJA[siji.type] ? "(" + BRANCH_HANJA[siji.type] + ")" : ""} 관계예요.`);
+  const mutualTag = `상대가 보는 나 · ${god2}(${TEN_GOD_HANJA[god2]}) · ${TEN_GOD_FLAVOR_REVERSE[god2]}`;
+
+  // 설명 문단 (구조화된 상세보기용 + 통합 desc)
+  const sceneMe = TEN_GOD_NARRATIVE[god];
+  const sceneThem = TEN_GOD_NARRATIVE_REVERSE[god2];
+  let sceneBranch = BRANCH_NARRATIVE[ilji.type];
+  if(siji) sceneBranch += ` 태어난 시각의 지지와도 ${siji.type}${BRANCH_HANJA[siji.type] ? "(" + BRANCH_HANJA[siji.type] + ")" : ""} 관계예요.`;
+  const descParts = [sceneMe, sceneThem, sceneBranch];
 
   return {
-    raw, god, godGroup, strength, ilji, wolji, yeonji, siji, fillScore, bonusScore, bonusNote,
+    raw, god, god2, godGroup, strength, ilji, wolji, yeonji, siji, fillScore, bonusScore, bonusNote,
+    teaser: TEN_GOD_FLAVOR[god],
     tag: tagParts.join(" · "),
+    mutualTag,
+    sceneMe, sceneThem, sceneBranch,
     desc: descParts.join(" ")
   };
 }
@@ -578,7 +691,9 @@ document.getElementById("submitBtn").addEventListener("click", ()=>{
   syncGenderToggle();
   applyFiltersAndRender();
 
-  document.getElementById("results").style.display = "block";
+  const resultsEl = document.getElementById("results");
+  resultsEl.style.display = "block";
+  setTimeout(()=> resultsEl.scrollIntoView({behavior:"smooth", block:"start"}), 60);
 });
 
 function renderSummary(mySaju, strength){
@@ -679,11 +794,28 @@ function applyFiltersAndRender(){
     finalScore: Math.max(1, Math.min(100, (r.result.raw / maxRaw) * 100))
   })).sort((a,b)=> b.finalScore - a.finalScore);
 
-  renderList(filtered);
+  renderTopList(filtered.slice(0,5));
+  renderRestList(filtered.slice(5));
 }
 
-function renderList(ranked){
-  const list = document.getElementById("resultList");
+function detailInnerHTML(r){
+  return `
+    <div class="tag-line">${r.result.tag}</div>
+    <div class="tag-line mutual">${r.result.mutualTag}</div>
+    <div class="scene-label">💘 케미 등급</div>
+    <div class="idol-desc"><b>${scoreTier(r.finalScore)}</b></div>
+    <div class="scene-label">👀 내가 상대를 볼 때</div>
+    <div class="idol-desc">${r.result.sceneMe}</div>
+    <div class="scene-label">🔁 상대가 나를 볼 때</div>
+    <div class="idol-desc">${r.result.sceneThem}</div>
+    <div class="scene-label">🔗 지지(地支) 궁합</div>
+    <div class="idol-desc">${r.result.sceneBranch}</div>
+    <div class="report-link" onclick="event.stopPropagation(); alert('제보 기능은 추후 지원 예정입니다. 정보가 다르다면 IDOLS 데이터를 직접 수정해주세요.')">ⓘ 정보 오류 신고</div>
+  `;
+}
+
+function renderTopList(ranked){
+  const list = document.getElementById("topList");
   if(!ranked.length){
     list.innerHTML = `<div class="empty-note">조건에 맞는 인물이 없어요. 검색어나 필터를 조정해보세요.</div>`;
     return;
@@ -692,24 +824,58 @@ function renderList(ranked){
     const rankClass = i===0?" rank-1":i===1?" rank-2":i===2?" rank-3":"";
     const dayElem = GAN_ELEM[r.idolSaju.day.gan];
     return `
-    <div class="idol-card${rankClass}">
-      <div class="rank-badge">${i+1}</div>
-      <div class="idol-info">
-        <div class="idol-name-row">
-          <span class="idol-name">${r.idol.name}</span>
-          <span class="idol-group">${r.idol.group}</span>
-          <span class="day-chip"><span class="dot" style="background:${ELEM_COLOR[dayElem]}"></span>${pillarStr(r.idolSaju.day)} · ${dayElem}</span>
+    <div class="idol-card${rankClass}" data-idx="${i}">
+      <div class="idol-row">
+        <div class="rank-badge">${i===0 ? "👑" : i+1}</div>
+        <div class="idol-info">
+          <div class="idol-name-row">
+            <span class="idol-name">${r.idol.name}</span>
+            <span class="idol-group">${r.idol.group}</span>
+          </div>
+          <div class="idol-name-row" style="margin-bottom:0;">
+            <span class="day-chip"><span class="dot" style="background:${ELEM_COLOR[dayElem]}"></span>${pillarStr(r.idolSaju.day)} · ${dayElem}</span>
+            <span class="teaser">${r.result.teaser}</span>
+          </div>
         </div>
-        <div class="tag-line">${r.result.tag}</div>
-        <div class="idol-desc">${r.result.desc}</div>
-        <div class="report-link" onclick="alert('제보 기능은 추후 지원 예정입니다. 정보가 다르다면 IDOLS 데이터를 직접 수정해주세요.')">ⓘ 정보 오류 신고</div>
+        <div class="score-wrap">
+          <div class="score">${r.finalScore.toFixed(2)}<sub>%</sub></div>
+          <div class="score-label">케미지수</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
-      <div class="score-wrap">
-        <div class="score">${r.finalScore.toFixed(2)}<sub>%</sub></div>
-        <div class="score-label">궁합</div>
-      </div>
+      <div class="idol-detail"><div class="idol-detail-inner">${detailInnerHTML(r)}</div></div>
     </div>`;
   }).join("");
+
+  list.querySelectorAll(".idol-card").forEach(card=>{
+    card.querySelector(".idol-row").addEventListener("click", ()=> card.classList.toggle("open"));
+  });
+}
+
+function renderRestList(ranked){
+  const list = document.getElementById("restList");
+  if(!ranked.length){
+    list.innerHTML = `<div class="empty-note">TOP 5 안에 다 들어갔어요! 조건을 넓혀보면 더 볼 수 있어요.</div>`;
+    return;
+  }
+  list.innerHTML = ranked.map((r,i)=>{
+    const rank = i + 6;
+    return `
+    <div class="rest-item" data-idx="${i}">
+      <div class="rest-row">
+        <span class="rest-rank">${rank}</span>
+        <span class="rest-name">${r.idol.name}</span>
+        <span class="rest-group">${r.idol.group}</span>
+        <span class="rest-score">${r.finalScore.toFixed(1)}%</span>
+        <svg class="rest-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="rest-detail"><div class="rest-detail-inner">${detailInnerHTML(r)}</div></div>
+    </div>`;
+  }).join("");
+
+  list.querySelectorAll(".rest-item").forEach(item=>{
+    item.querySelector(".rest-row").addEventListener("click", ()=> item.classList.toggle("open"));
+  });
 }
 </script>
 </body>
